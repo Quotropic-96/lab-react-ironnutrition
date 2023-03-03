@@ -1,13 +1,6 @@
-.food-list {
+.food-list-container {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   padding: 50px;
-}
-.food-card {
-  display: flex;
-  flex-direction: column;
-}
-.food-card img {
-  width: 150px;
 }
