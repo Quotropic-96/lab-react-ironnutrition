@@ -22,6 +22,10 @@ function App() {
   const handleSearchFilter = (value) => {
     setSearchValue(value);
   }
+
+  const filterFoods = (value) => {
+    return foods.filter(elem => elem.name.toLowerCase().includes(searchValue.toLowerCase()))
+  }
   
   const handleDelete = (deleteName) => {
     const filteredFoods = foods.filter(elem => elem.name !== deleteName);
@@ -34,7 +38,8 @@ function App() {
       <button onClick={handleShowForm}>{showForm ? 'Hide' : 'Add food'}</button>
       {showForm && <AddFoodForm handleAddFood={handleAddFood}/>}
       <div className="food-list-container">
-        {foods.filter(elem => elem.name.toLowerCase().includes(searchValue.toLowerCase())).map((elem, idx) => <FoodBox key={idx} food={elem} handleDelete={handleDelete}/>)}
+        {filterFoods(searchValue).map((elem, idx) => <FoodBox key={idx} food={elem} handleDelete={handleDelete}/>)}
+        {filterFoods(searchValue).length === 0 && 'Oooops nothing to show'}
       </div>
     </>
   );
